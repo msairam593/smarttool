@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Registration</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{ajaxoperator.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>Registration Form</h2>
+		<form class="form-horizontal" th:action="@{/createuser}"
+			th:object="${user}" method="POST">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="text">UserName:</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" th:field="*{username}"
+						placeholder="Enter email" name="email" id="checkusername" /> <span
+						class="error-message" th:if="${#fields.hasErrors('username')}"
+						th:text="#{error.user.username}" th:errors="*{username}">..</span>
+				</div>
+				<label class="control-label col-sm-4" for="text" id="check"></label>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Password:</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control" id="pwd"
+						th:field="*{password}" placeholder="Enter password" name="pwd" />
+					<span class="error-message"
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
+				</div>
+				<label class="control-label col-sm-5" for="text"></label>
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="sel1">Select
+					Role:</label> <select id="checkrole" th:field="*{role}">
+					<option value="-1">Select Role</option>
+					<option th:each="role : ${roles}" th:value="${role.id}"
+						th:utext="${role.rolename}" />
+				</select> <span class="error-message"
+					th:if="${#fields.hasErrors('countries')}" th:errors="*{countries}">..</span>
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="sel1">Select
+					Country:</label> <select id="comboboxcountry" th:field="*{countries}">
+					<option value="-1">Select Country</option>
+					<option th:each="country : ${countries}" th:value="${country.id}"
+						th:utext="${country.country}" />
+				</select> <span class="error-message"
+					th:if="${#fields.hasErrors('countries')}" th:errors="*{countries}">..</span>
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="sel1">Select
+					Operator:</label> <select th:field="*{operators}" id="operatordropdown">
+					<option value="-1">Select Operator</option>
+				</select> <span class="error-message"
+					th:if="${#fields.hasErrors('operators')}" th:errors="*{operators}">..</span>
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="sel1">Select
+					Partner:</label> <select th:field="*{partners}" id="partnerdropdown">
+					<option value="-1">Select Partner</option>
+				</select> <span class="error-message"
+					th:if="${#fields.hasErrors('partners')}" th:errors="*{partners}">..</span>
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="sel1">Select
+					Mode:</label> <select th:field="*{mode}" id="modedropdown"
+					multiple="multiple">
+					<option value="-1">Select Mode</option>
+				</select> <span class="error-message" th:if="${#fields.hasErrors('mode')}"
+					th:errors="*{mode}">..</span>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<div class="checkbox">
+						<label>Select Start Date:<input type="date"
+							name="startdate" th:field="*{startdate}" required="required" /> <span
+							class="error-message" th:if="${#fields.hasErrors('startdate')}"
+							th:errors="*{startdate}">..</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<div class="checkbox">
+						<label>Select End Date:<input type="date" name="enddate"
+							th:field="*{enddate}" required="required" /> <span
+							class="error-message" th:if="${#fields.hasErrors('enddate')}"
+							th:errors="*{enddate}">..</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</body>
+</html>

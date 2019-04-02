@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Login</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+</head>
+<body>
+	<div class="container">
+		<h2>Login Form</h2>
+		<form class="form-horizontal" th:action="@{/Userlogin}"
+			method="POST">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="text">UserName:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" 
+						placeholder="Enter UserName" name="username" id="checkusername"
+						required="required" /> 
+				</div>
+				<label class="control-label col-sm-5" for="text" id="check"></label>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Password:</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control" id="pwd"
+						placeholder="Enter password" name="password"
+						required="required" /> 
+				</div>
+				<label class="control-label col-sm-5" for="text"></label>
+			</div>
+			<span style="color: red;" th:text="${error}"></span>
+
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
