@@ -4,8 +4,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+///Added to test 
 
-///testing pull request  two
 public class Userregistration {
 	
 	@NotNull(message="please enter Username")
